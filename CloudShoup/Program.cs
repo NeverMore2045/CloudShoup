@@ -32,4 +32,5 @@ app.MapPost("/delete", async (HttpContext context, IOrderService service) =>
     service.RemoveOrderById(id);
     await context.Response.WriteAsync("Order deleted");
 });
+app.MapPost("/")
 app.Run();

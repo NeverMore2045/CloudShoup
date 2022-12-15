@@ -1,5 +1,6 @@
 ﻿using CloudShoup.Models.Entity;
 using CloudShoup.Service;
+using System.Collections.Concurrent;
 
 namespace CloudShoup.Controller
 {
@@ -26,6 +27,12 @@ namespace CloudShoup.Controller
             int id = Convert.ToInt32(context.Request.Form["id"]);
             crudservice.RemoveOrderById(id);
             await context.Response.WriteAsync("Order deleted");
+        }
+        public async void UpdateOrder(HttpContext context)
+        {
+            Order neworder = await context.Request.ReadFromJsonAsync<Order>();
+            crudservice.UpdateOrder(neworder);
+            await context.Response.WriteAsync("Order updated");
         }
     }
 }
