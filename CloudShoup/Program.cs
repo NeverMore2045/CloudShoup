@@ -28,7 +28,7 @@ app.MapPost("/add", async (HttpContext context, IOrderService service) =>
 });
 app.MapPost("/delete", async (HttpContext context, IOrderService service) =>
 {
-    int id = Convert.ToInt32(context.Request.Form["id"]);
+    int id = Convert.ToInt32(context.Request.Form["id"]) ;
     service.RemoveOrderById(id);
     await context.Response.WriteAsync("Order deleted");
 });
